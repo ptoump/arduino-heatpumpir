@@ -50,6 +50,7 @@
 #define PANASONIC_JKE 1
 #define PANASONIC_NKE 2
 #define PANASONIC_LKE 3
+#define PANASONIC_MKE 4
 
 
 class PanasonicHeatpumpIR : public HeatpumpIR

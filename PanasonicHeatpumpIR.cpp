@@ -52,6 +52,18 @@ PanasonicLKEHeatpumpIR::PanasonicLKEHeatpumpIR() : PanasonicHeatpumpIR()
 }
 
 
+PanasonicLKEHeatpumpIR::PanasonicLKEHeatpumpIR() : PanasonicHeatpumpIR()
+{
+  static const char PROGMEM model[] PROGMEM = "panasonic_mke";
+  static const char PROGMEM info[]  PROGMEM = "{\"mdl\":\"panasonic_mke\",\"dn\":\"Panasonic MKE\",\"mT\":16,\"xT\":30,\"fs\":6,\"maint\":[8,10]}";
+
+  _model = model;
+  _info = info;
+
+  _panasonicModel = PANASONIC_MKE;
+}
+
+
 // Panasonic DKE/NKE/JKE numeric values to command bytes
 void PanasonicHeatpumpIR::send(IRSender& IR, uint8_t powerModeCmd, uint8_t operatingModeCmd, uint8_t fanSpeedCmd, uint8_t temperatureCmd, uint8_t swingVCmd, uint8_t swingHCmd)
 {
@@ -229,6 +241,12 @@ void PanasonicHeatpumpIR::sendPanasonic(IRSender& IR, uint8_t operatingMode, uin
     case PANASONIC_LKE:
       panasonicTemplate[17] = 0x06;
       panasonicTemplate[13] = 0x02;
+      break;
+    case PANASONIC_MKE:
+      panasonicTemplate[19] = 0x06;
+      panasonicTemplate[20] = 0xE0;
+      panasonicTemplate[23] = 0x80;
+      panasonicTemplate[25] = 0x06;
       break;
   }
 
