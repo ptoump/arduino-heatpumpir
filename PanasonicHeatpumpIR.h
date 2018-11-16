@@ -91,4 +91,10 @@ class PanasonicLKEHeatpumpIR : public PanasonicHeatpumpIR
     PanasonicLKEHeatpumpIR();
 };
 
+class PanasonicMKEHeatpumpIR : public PanasonicHeatpumpIR
+{
+  public:
+    PanasonicMKEHeatpumpIR();
+};
+
 #endif
